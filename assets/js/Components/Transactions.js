@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
+import axios from 'axios';
 
 export default class Transactions extends Component {
+  state = {
+    transactions: []
+  };
+
+  componentDidMount() {
+    axios
+      .get('')
+      .then(res => this.setState({ transactions: res.data }))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="Transaction-table">

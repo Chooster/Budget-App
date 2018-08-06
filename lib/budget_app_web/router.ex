@@ -20,7 +20,12 @@ defmodule BudgetAppWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BudgetAppWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BudgetAppWeb do
+    pipe_through :api
+
+    get "/budgets", BudgetsController, :index
+    post "/budgets", BudgetsController, :create
+    show "/budgets/:id", BudgetsController, :show
+    put "/budgets/:id", BudgetsController, :update
+  end
 end
