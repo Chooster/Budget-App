@@ -22,7 +22,7 @@ export default class Home extends Component {
         <div>
           {this.state.users.map(user => {
             return (
-              <Link to={`/user/${user.id}`}>
+              <Link to={{ pathname: `/user/${user.id}`, state: { user: user.name} }}>
                 <Button bsStyle="primary">{user.name}</Button>
               </Link>
             );

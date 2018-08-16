@@ -7,12 +7,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { routes } from './routes';
 
-class BudgetApp extends Component {
-  render() {
-    return <h1>Budget App!</h1>;
-  }
-}
-
 ReactDOM.render(
   <Router children={routes} />,
   document.getElementById('Budget-app')

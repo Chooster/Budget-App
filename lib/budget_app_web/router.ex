@@ -13,19 +13,27 @@ defmodule BudgetAppWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api", BudgetAppWeb do
+    pipe_through :api
+
+    resources "/budgets", BudgetController, except: [:new, :edit]
+    # get "/budgets", BudgetsController, :index
+    # post "/budgets", BudgetsController, :create
+    # show "/budgets/:id", BudgetsController, :show
+    # put "/budgets/:id", BudgetsController, :update
+
+    resources "/transactions", TransactionController, except: [:new, :edit]
+    # get "/transactions", TransactionsController, :index
+    # post "/transactions", TransactionsController, :create
+    # show "/transactions/:id", TransactionsController, :show
+    # put "/transactions/:id", TransactionsController, :update
+  end
+
   scope "/", BudgetAppWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/*path", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  scope "/api", BudgetAppWeb do
-    pipe_through :api
-
-    get "/budgets", BudgetsController, :index
-    post "/budgets", BudgetsController, :create
-    show "/budgets/:id", BudgetsController, :show
-    put "/budgets/:id", BudgetsController, :update
-  end
+  
 end

@@ -1,4 +1,4 @@
-.App{text-align:center}.Navbar{margin:0}.App-header{background-color:#222;color:#fff;margin:0;padding:20px;text-align:center}.App-title{font-size:1.5em}.App-intro{font-size:large}.Budget{margin-top:5vh;text-align:center}.Budget-form,.Transaction-form{padding:10px}.Transaction-table{margin:0 auto;width:80vw}
+.App{text-align:center}.Navbar{margin:0}.App-header{background-color:#222;color:#fff;margin:0;padding:20px;text-align:center}.App-title{font-size:1.5em}.App-intro{font-size:large}.Budget{margin-top:5vh;text-align:center;white-space:pre-wrap}.User-display{margin:1%}.Budget-form,.Transaction-form{padding:10px}.Transaction-table{margin:0 auto;width:80vw}
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.

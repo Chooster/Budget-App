@@ -3,18 +3,32 @@ import { Table } from 'react-bootstrap';
 import axios from 'axios';
 
 export default class Transactions extends Component {
-  state = {
-    transactions: []
-  };
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    axios
-      .get('')
-      .then(res => this.setState({ transactions: res.data }))
-      .catch(err => console.log(err));
+    this.state = {
+      user: props.user,
+      transactions: props.transactions || []
+    };
+  }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.transactions.length !== state.transactions.length) {
+  //     return {
+  //       transactions: props.transactions
+  //     };
+  //   }
+  //   return null;
+  // }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.transactions !== nextProps.transactions) {
+      this.setState({ transactions: nextProps.transactions });
+    }
   }
 
   render() {
+    // console.log(`transactions: ${this.state.transactions}`);
     return (
       <div className="Transaction-table">
         <Table bordered hover responsive>
@@ -23,16 +37,23 @@ export default class Transactions extends Component {
               <th>#</th>
               <th>Budget</th>
               <th>Amount</th>
+              <th>Category</th>
               <th>User</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Marketing</td>
-              <td>100</td>
-              <td>Sal</td>
-            </tr>
+            {this.state.transactions &&
+              this.state.transactions
+                .filter(t => t.user === this.state.user)
+                .map(transaction => (
+                  <tr key={transaction.id}>
+                    <td>{transaction.id}</td>
+                    <td>{transaction.budget_name}</td>
+                    <td>${transaction.amount}</td>
+                    <td>{transaction.category}</td>
+                    <td>{transaction.user}</td>
+                  </tr>
+                ))}
           </tbody>
         </Table>
       </div>

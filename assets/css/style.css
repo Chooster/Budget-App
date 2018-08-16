@@ -25,6 +25,11 @@
 .Budget {
   text-align: center;
   margin-top: 5vh;
+  white-space: pre-wrap;
+}
+
+.User-display {
+  margin: 1%;
 }
 
 .Budget-form {
